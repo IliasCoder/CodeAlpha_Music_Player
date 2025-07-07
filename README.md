@@ -1,5 +1,3 @@
-# CodeAlpha_Music_Player
-
 # 🎧 CodeAlpha Music Player
 
 A modern, responsive, **Spotify-inspired web music player** built with pure HTML, CSS, and JavaScript — no frameworks or libraries needed.
