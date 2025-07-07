@@ -23,6 +23,8 @@ A modern, responsive, **Spotify-inspired web music player** built with pure HTML
    ```bash
    git clone https://github.com/your-username/CodeAlpha_Music_Player.git
    cd CodeAlpha_Music_Player
+
+
 CodeAlpha_Music_Player/
 ├── index.html      # Main HTML structure
 ├── style.css       # All styles, animations, and responsive layout
