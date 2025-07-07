@@ -25,10 +25,10 @@ A modern, responsive, **Spotify-inspired web music player** built with pure HTML
    cd CodeAlpha_Music_Player
 
 
-CodeAlpha_Music_Player/
-├── index.html      # Main HTML structure
-├── style.css       # All styles, animations, and responsive layout
-└── script.js       # Audio logic, interactivity, and event handling
+CodeAlpha_Music_Player:
+   ├── index.html      # Main HTML structure
+   ├── style.css       # All styles, animations, and responsive layout
+   └── script.js       # Audio logic, interactivity, and event handling
 To Run it. open index.html in your browse or use Live server extension in Vscode.
 
 
