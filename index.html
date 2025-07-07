@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-blur" id="background-blur"></div>
+  <div class="spotify-layout">
+    <nav class="sidebar" aria-label="Sidebar Navigation">
+      <div class="sidebar-logo">🎵</div>
+      <div class="sidebar-title">Music Player</div>
+    </nav>
+    <main class="main-content">
+      <header class="main-header">
+        <h2>Albums</h2>
+        <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" class="theme-toggle" title="Toggle Dark/Light Mode">
+          <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41"/></svg>
+        </button>
+      </header>
+      <section class="albums-grid" id="albums-grid" aria-label="Albums">
+        <!-- Album cards will be rendered here by Javascript -->
+      </section>
+    </main>
+  </div>
+  <!-- Now Playing Bar (Bottom Media Bar) -->
+  <div id="now-playing-bar" class="now-playing-bar" style="display:none;">
+    <div class="npb-left">
+      <img id="npb-cover" class="npb-cover" src="" alt="Now Playing Cover" />
+      <div class="npb-info">
+        <div id="npb-title" class="npb-title">Title</div>
+        <div id="npb-artist" class="npb-artist">Artist</div>
+      </div>
+    </div>
+    <div class="npb-center">
+      <button id="npb-prev" class="npb-btn" aria-label="Previous">
+        <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+      </button>
+      <button id="npb-play" class="npb-btn" aria-label="Play">
+        <svg id="npb-play-icon" width="28" height="28" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <svg id="npb-pause-icon" style="display:none" width="28" height="28" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      </button>
+      <button id="npb-next" class="npb-btn" aria-label="Next">
+        <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+      </button>
+      <div class="npb-seek-group">
+        <input type="range" id="npb-seek" min="0" value="0" step="1" aria-label="Seek Bar" />
+        <span id="npb-current">0:00</span> / <span id="npb-duration">0:00</span>
+      </div>
+    </div>
+    <div class="npb-right">
+      <button id="npb-mute" class="npb-btn" aria-label="Mute">
+        <svg id="npb-volume-icon" width="20" height="20" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg id="npb-mute-icon" style="display:none" width="20" height="20" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
+      <input type="range" id="npb-volume" min="0" max="1" step="0.01" value="1" aria-label="Volume Bar" />
+    </div>
+  </div>
+  <footer class="sticky-footer">
+    <main class="music-player mobile-player" aria-label="Music Player">
+      <section class="player-info">
+        <h1 id="song-title-mobile">Song Title</h1>
+        <div class="time-info">
+          <span id="current-time-mobile">0:00</span> / <span id="duration-mobile">0:00</span>
+        </div>
+      </section>
+      <section class="controls" aria-label="Player Controls">
+        <button id="prev-mobile" aria-label="Previous Song" class="control-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        </button>
+        <button id="play-pause-mobile" aria-label="Play" class="control-btn">
+          <svg id="play-icon-mobile" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg id="pause-icon-mobile" style="display:none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <button id="next-mobile" aria-label="Next Song" class="control-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+        </button>
+        <input type="range" id="seek-bar-mobile" min="0" value="0" step="1" aria-label="Seek Bar">
+        <button id="mute-mobile" aria-label="Mute" class="control-btn">
+          <svg id="volume-icon-mobile" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="mute-icon-mobile" style="display:none" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <input type="range" id="volume-bar-mobile" min="0" max="1" step="0.01" value="1" aria-label="Volume Bar">
+      </section>
+    </main>
+  </footer>
+  <audio id="audio" preload="metadata"></audio>
+  <div id="desktop-player-container">
+    <main class="music-player desktop-player" aria-label="Music Player">
+      <section class="player-info">
+        <h1 id="song-title">Song Title</h1>
+        <div class="time-info">
+          <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+        </div>
+      </section>
+      <section class="controls" aria-label="Player Controls">
+        <button id="prev" aria-label="Previous Song" class="control-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+        </button>
+        <button id="play-pause" aria-label="Play" class="control-btn">
+          <svg id="play-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <svg id="pause-icon" style="display:none" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <button id="next" aria-label="Next Song" class="control-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+        </button>
+        <input type="range" id="seek-bar" min="0" value="0" step="1" aria-label="Seek Bar">
+        <button id="mute" aria-label="Mute" class="control-btn">
+          <svg id="volume-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <svg id="mute-icon" style="display:none" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+        <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1" aria-label="Volume Bar">
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
